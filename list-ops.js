@@ -4,20 +4,46 @@
 //
 
 export class List {
-  constructor() {
-    throw new Error("Remove this statement and implement this function");
+  constructor(list) {
+    this.values=list?list:[];
+    // list?
+    // this.values=list
+    // :this.values=[];
+    // throw new Error("Remove this statement and implement this function");
   }
 
-  append() {
-    throw new Error("Remove this statement and implement this function");
+  append(otherList) {
+    // for(let i=0;i<otherList.values.length();i++){
+    //   this.values=this.values+otherList.values[i]
+    // }
+    this.values=[...this.values,...otherList.values];
+    return this;
+    // throw new Error("Remove this statement and implement this function");
   }
 
-  concat() {
-    throw new Error("Remove this statement and implement this function");
+  concat(bigList) {
+    const newBigList=new List()
+    for(let i=0;i<bigList.values.length;i++){
+      newBigList.values=[...newBigList.values,...bigList.values[i].values]
+    }
+    // console.log(newBigList)
+    this.values=[...this.values,...newBigList.values];
+    return this;
+    // throw new Error("Remove this statement and implement this function");
   }
 
-  filter() {
-    throw new Error("Remove this statement and implement this function");
+  filter(callback) {
+    const newArray=new List();
+    for(let a in this.values){
+      if(callback(this.values[a])){
+        newArray.values.push(this.values[a])
+      }
+    }
+    console.log(callback)
+    console.log(this.values)
+    console.log(newArray)
+    return newArray;
+    // throw new Error("Remove this statement and implement this function");
   }
 
   map() {
